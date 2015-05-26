@@ -56,12 +56,12 @@ class ViewController: UIViewController {
     @IBAction func signInPressed(sender: AnyObject) {
     let alertController = UIAlertController(title: "Error", message: "Please enter a valid email", preferredStyle: .Alert)
         
-        if self.isValidEmail(labelEmail.text)
-        {
-    
+        /*if self.isValidEmail(labelEmail.text)
+        {*/
+                ///// A CHANGER ///////
             let parameters = [
-                "email": self.labelEmail.text,
-                "password": self.labelPassword.text
+                "email": "thomasr@innervisiongroup.com",
+                "password": "inner2013"
             ]
         
             Alamofire.request(.POST, "http:foodlidays.dev.innervisiongroup.com/api/v1/resto/login",parameters: parameters).responseJSON() {
@@ -70,17 +70,19 @@ class ViewController: UIViewController {
                 if error == nil {
                     println(jsonData)
                     self.infoManager = JSON(jsonData!)
+                    self.performSegueWithIdentifier("goto_orders", sender: nil)
                 } else {
                     println("Bad identifiers")
                     self.showAlert("Wrong Email/Password combination")
                     self.presentViewController(alertController, animated: true, completion: nil)
+
                 }
             }
-        } else {
+        /*} else {
             println("Bad email")
             self.showAlert("Please enter a correct e-mail")
             self.presentViewController(alertController, animated: true, completion: nil)
-        }
+        }*/
     
     }
 
