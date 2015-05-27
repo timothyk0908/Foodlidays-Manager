@@ -12,17 +12,17 @@ import SwiftyJSON
 
 class OrdersVC: UITableViewController {
     
-    var infoManager: JSON!
+    var id: Int!
     var navigationBar:UINavigationBar=UINavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.frame.origin.y = -10
         
-        let id = self.infoManager["id"].intValue
-
+        println(self.id)
         
         
+        loadOrders()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,13 +31,8 @@ class OrdersVC: UITableViewController {
     }
 
     @IBAction func changeCat(sender: AnyObject) {
+
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = "Home"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Lobster 1.4", size: 34)!,  NSForegroundColorAttributeName: UIColor.whiteColor()]
-    }
-    
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 
@@ -46,6 +41,20 @@ class OrdersVC: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
+    }
+    
+    func loadOrders()
+    {
+        
+        Alamofire.request(.GET, "http:foodlidays.dev.innervisiongroup.com/api/v1/orders", parameters: ["id": id])
+            .response { (request, response, data, error) in
+                if(error == nil) {
+                    println(response)
+                }
+                    
+            else { println("erreur") }
+                
+        }
     }
 
 

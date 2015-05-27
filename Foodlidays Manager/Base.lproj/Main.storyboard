@@ -40,7 +40,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CyX-8P-4Yu"/>
-                                    <segue destination="Bz7-mc-vLX" kind="show" identifier="goto_orders" id="7U3-ZP-dwt"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T44-4G-j3l">
@@ -58,6 +57,7 @@
                         <outlet property="labelEmail" destination="T44-4G-j3l" id="dg5-m1-cZi"/>
                         <outlet property="labelPassword" destination="Vo5-rg-1nG" id="Yjm-Hu-RlV"/>
                         <outlet property="signInButton" destination="D8t-sC-5gD" id="hLd-U7-5Ds"/>
+                        <segue destination="Bz7-mc-vLX" kind="show" identifier="goto_orders" id="f3h-f3-1S6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelEmail: UITextField!
     @IBOutlet weak var labelPassword: UITextField!
     
+    var id: Int!
+    
     var infoManager : JSON!
     
     func isValidEmail(testStr:String) -> Bool {
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bgFoodlidays")!)
+        println("salut !!!!!")
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,20 +48,14 @@ class ViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if(segue.identifier == "goto_orders"){
-            let destinationVC = segue.destinationViewController as! OrdersVC
-            destinationVC.infoManager = self.infoManager
-        }
-    }
-    
 
     @IBAction func signInPressed(sender: AnyObject) {
+    println("slt") 
     let alertController = UIAlertController(title: "Error", message: "Please enter a valid email", preferredStyle: .Alert)
         
-        /*if self.isValidEmail(labelEmail.text)
-        {*/
-                ///// A CHANGER ///////
+        println("salut ptdr")
+        
+        //if self.isValidEmail(labelEmail.text) {
             let parameters = [
                 "email": "thomasr@innervisiongroup.com",
                 "password": "inner2013"
@@ -67,23 +64,36 @@ class ViewController: UIViewController {
             Alamofire.request(.POST, "http:foodlidays.dev.innervisiongroup.com/api/v1/resto/login",parameters: parameters).responseJSON() {
                 (_, _, jsonData, error) in
             
-                if error == nil {
-                    println(jsonData)
-                    self.infoManager = JSON(jsonData!)
-                    self.performSegueWithIdentifier("goto_orders", sender: nil)
-                } else {
-                    println("Bad identifiers")
-                    self.showAlert("Wrong Email/Password combination")
-                    self.presentViewController(alertController, animated: true, completion: nil)
-
+                if (error == nil) {
+                            self.infoManager = JSON(jsonData!)
+                            println(self.infoManager)
+                            self.id = self.infoManager["id"].intValue
+                            println(self.id)
+                        self.performSegueWithIdentifier("goto_orders", sender: nil)
+                    }
+                
+                    else {
+                        println("Bad identifiers")
+                        self.showAlert("Wrong Email/Password combination")
+                        self.presentViewController(alertController, animated: true, completion: nil)
                 }
-            }
-        /*} else {
+           // }
+        }
+         /*else {
             println("Bad email")
             self.showAlert("Please enter a correct e-mail")
             self.presentViewController(alertController, animated: true, completion: nil)
         }*/
     
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if(segue.identifier == "goto_orders"){
+            println("salut xD")
+            let destinationVC = segue.destinationViewController as! OrdersVC
+            destinationVC.id = self.id
+        }
     }
 
 }
