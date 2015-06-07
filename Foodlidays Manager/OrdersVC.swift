@@ -15,41 +15,30 @@ class OrdersVC: UITableViewController {
     var id: Int!
     var navigationBar:UINavigationBar=UINavigationBar()
     
+    var allOrders: JSON!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.frame.origin.y = -10
         
         println(self.id)
-        
-        
         loadOrders()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
     }
-
-    @IBAction func changeCat(sender: AnyObject) {
-
-    }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
     
     func loadOrders()
     {
         
-        Alamofire.request(.GET, "http:foodlidays.dev.innervisiongroup.com/api/v1/orders", parameters: ["id": id])
-            .response { (request, response, data, error) in
+        Alamofire.request(.GET, "http:foodlidays.dev.innervisiongroup.com/api/v1/resto/\(self.id)/orders")
+            .responseJSON() { (request, response, data, error) in
                 if(error == nil) {
-                    println(response)
+                    self.allOrders = JSON(data!)
+                    println(self.allOrders)
                 }
                     
             else { println("erreur") }

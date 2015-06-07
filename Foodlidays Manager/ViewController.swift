@@ -93,6 +93,7 @@ class ViewController: UIViewController {
             println("salut xD")
             let destinationVC = segue.destinationViewController as! OrdersVC
             destinationVC.id = self.id
+            println(destinationVC.id)
         }
     }
 
