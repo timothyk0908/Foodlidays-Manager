@@ -31,7 +31,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bgFoodlidays")!)
-        println("salut !!!!!")
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,11 +49,8 @@ class ViewController: UIViewController {
     
 
     @IBAction func signInPressed(sender: AnyObject) {
-    println("slt") 
     let alertController = UIAlertController(title: "Error", message: "Please enter a valid email", preferredStyle: .Alert)
-        
-        println("salut ptdr")
-        
+
         //if self.isValidEmail(labelEmail.text) {
             let parameters = [
                 "email": "thomasr@innervisiongroup.com",
@@ -66,9 +62,7 @@ class ViewController: UIViewController {
             
                 if (error == nil) {
                             self.infoManager = JSON(jsonData!)
-                            println(self.infoManager)
                             self.id = self.infoManager["id"].intValue
-                            println(self.id)
                         self.performSegueWithIdentifier("goto_orders", sender: nil)
                     }
                 
@@ -90,10 +84,8 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if(segue.identifier == "goto_orders"){
-            println("salut xD")
             let destinationVC = segue.destinationViewController as! OrdersVC
             destinationVC.id = self.id
-            println(destinationVC.id)
         }
     }
 
