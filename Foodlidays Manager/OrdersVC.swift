@@ -14,6 +14,7 @@ class OrderCell : UITableViewCell{
     
     @IBOutlet weak var numero: UILabel!
     @IBOutlet weak var prix: UILabel!
+    var id = 0
 }
 
 class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate {
@@ -21,20 +22,57 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
     var id: Int!
     var navigationBar:UINavigationBar=UINavigationBar()
     
+    var cat: String = "pending"
     var allOrders: JSON = []
     
     var cpt: Int!
+
+    @IBOutlet weak var toolbar: UIToolbar!
+    
+    @IBOutlet weak var catChanger: UISegmentedControl!
     
     @IBAction func categoryPicker(sender: AnyObject) {
+        switch catChanger.selectedSegmentIndex
+        {
+        case 0:
+            self.cat = "pending"
+        case 1:
+            self.cat = "processed"
+        case 2:
+            self.cat = "delivered"
+        case 3:
+            self.cat = "cancelled"
+        default:
+            self.cat = "pending"
+            break;
+        }
+        
+        self.cpt = 0
+        self.indexOrder = 0
+        countCat()
         self.tableView.reloadData()
     }
+    
+    
+    func countCat()
+    {
+        for(index,order) in self.allOrders
+        {
+            if(order["status"].stringValue == self.cat)
+            {
+                self.cpt = self.cpt + 1
+            }
+        }
+    }
+    
     
     @IBOutlet weak var numero: UILabel!
     @IBOutlet weak var prix: UILabel!
     
+    var indexOrder :Int = 0
+    
     override func viewDidLoad() {
         self.loadOrders()
-        
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.cpt = self.allOrders.count
             self.tableView.reloadData()
@@ -52,11 +90,19 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! OrderCell!
-        cell.numero.text = self.allOrders[indexPath.row]["place_room_number"].stringValue
-        cell.prix.text = self.allOrders[indexPath.row]["total_price"].stringValue
-        println(self.allOrders.count)
+        
+        while(self.allOrders[indexOrder]["status"].stringValue != self.cat)
+        {
+            self.indexOrder = self.indexOrder + 1
+        }
+
+                cell.numero.text = self.allOrders[indexOrder]["place_room_number"].stringValue
+                cell.prix.text = self.allOrders[indexOrder]["total_price"].stringValue
+                cell.id = self.allOrders[indexOrder]["id"].intValue
+                println(cell.id)
+        
+        self.indexOrder = self.indexOrder + 1
         
         return cell
     }

@@ -52,6 +52,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="K65-BH-Iov"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="labelEmail" destination="T44-4G-j3l" id="dg5-m1-cZi"/>
@@ -63,27 +67,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Orders-->
+        <!--OrdersVC-->
         <scene sceneID="Nwx-WU-9jg">
             <objects>
                 <tableViewController id="6Bg-00-blB" customClass="OrdersVC" customModule="Foodlidays_Manager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Tj9-kF-var">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" id="Tj9-kF-var">
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <segmentedControl key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="RXE-6F-sAu">
-                            <rect key="frame" x="0.0" y="198" width="320" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Pending"/>
-                                <segment title="Processed"/>
-                                <segment title="Delivered"/>
-                                <segment title="Cancelled"/>
-                            </segments>
-                            <connections>
-                                <action selector="categoryPicker:" destination="6Bg-00-blB" eventType="valueChanged" id="boF-FH-bb2"/>
-                            </connections>
-                        </segmentedControl>
+                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="70" id="gMI-Tm-ntl">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Orders" style="plain" id="j9l-3j-jFz">
+                                    <segmentedControl key="customView" alpha="0.099999999999999686" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="eR4-gW-gzZ">
+                                        <rect key="frame" x="16" y="8" width="299" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.42533641318652082" green="0.68055000919609565" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <segments>
+                                            <segment title="Pending"/>
+                                            <segment title="Processed"/>
+                                            <segment title="Delivered"/>
+                                            <segment title="Cancelled"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.92380056290000001" green="0.94821174210000003" blue="0.94927781820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="categoryPicker:" destination="6Bg-00-blB" eventType="valueChanged" id="8v3-PP-QV3"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </barButtonItem>
+                            </items>
+                            <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="21e-Cp-DK1" customClass="OrderCell" customModule="Foodlidays_Manager" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -115,13 +130,17 @@
                             <outlet property="delegate" destination="6Bg-00-blB" id="ccb-mO-28X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Orders" id="2zN-bt-2fz"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationItem key="navigationItem" id="2zN-bt-2fz"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="catChanger" destination="eR4-gW-gzZ" id="y3G-YP-Qo1"/>
+                        <outlet property="toolbar" destination="gMI-Tm-ntl" id="RNm-6L-69b"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXF-Kk-aje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="219"/>
+            <point key="canvasLocation" x="836" y="219"/>
         </scene>
     </scenes>
     <resources>
