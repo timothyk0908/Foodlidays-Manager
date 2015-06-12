@@ -90,6 +90,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         })
         
         super.viewDidLoad()
+        self.toolbar.frame = CGRect(x: 0,y: 0,width: 320,height: 80)
         tableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: "OrderCellOne")
     }
 
@@ -148,6 +149,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
             let destinationVC = segue.destinationViewController as! DetailOrder
             var indexPath = self.tableView.indexPathForSelectedRow() //get index of data for selected row
             destinationVC.id = self.cellId
+            destinationVC.restoId = self.id
         }
     }
             

@@ -63,6 +63,7 @@ class ViewController: UIViewController {
                 if (error == nil) {
                             self.infoManager = JSON(jsonData!)
                             self.id = self.infoManager["id"].intValue
+                    println("coucou")
                         self.performSegueWithIdentifier("goto_orders", sender: nil)
                     }
                 
