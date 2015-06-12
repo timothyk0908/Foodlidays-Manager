@@ -12,9 +12,19 @@ import SwiftyJSON
 
 class OrderCell : UITableViewCell{
     
+    @IBOutlet weak var sender: UIButton!
+    
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var numero: UILabel!
     @IBOutlet weak var prix: UILabel!
+    
     var id = 0
+    
+    @IBAction func toOrder(sender: AnyObject) {
+        println(id)
+    }
+    
 }
 
 class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate {
@@ -24,6 +34,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
     
     var cat: String = "pending"
     var allOrders: JSON = []
+    var cellId: Int!
     
     var cpt: Int!
 
@@ -46,7 +57,6 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
             self.cat = "pending"
             break;
         }
-        
         self.cpt = 0
         self.indexOrder = 0
         countCat()
@@ -75,10 +85,9 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         self.loadOrders()
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.cpt = self.allOrders.count
+            println(self.cpt)
             self.tableView.reloadData()
         })
-        println(self.cpt)
-        println(self.allOrders.count)
         
         super.viewDidLoad()
         tableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: "OrderCellOne")
@@ -86,6 +95,15 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cpt
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let indexPath = tableView.indexPathForSelectedRow();
+        
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as! OrderCell?;
+        cellId = currentCell?.id
+        performSegueWithIdentifier("goto_detail", sender: self)
     }
     
     
@@ -99,15 +117,16 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
 
                 cell.numero.text = self.allOrders[indexOrder]["place_room_number"].stringValue
                 cell.prix.text = self.allOrders[indexOrder]["total_price"].stringValue
+                cell.email.text = self.allOrders[indexOrder]["client_email"].stringValue
+                cell.date.text = self.allOrders[indexOrder]["created_at"].stringValue
                 cell.id = self.allOrders[indexOrder]["id"].intValue
-                println(cell.id)
+
         
         self.indexOrder = self.indexOrder + 1
         
         return cell
     }
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
@@ -123,4 +142,13 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
             }
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if(segue.identifier == "goto_detail"){
+            let destinationVC = segue.destinationViewController as! DetailOrder
+            var indexPath = self.tableView.indexPathForSelectedRow() //get index of data for selected row
+            destinationVC.id = self.cellId
+        }
+    }
+            
 }

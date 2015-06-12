@@ -18,6 +18,7 @@
 		D329DF981AE2EC040047A645 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D329DF7D1AE2EBEF0047A645 /* Alamofire.framework */; };
 		D329DF991AE2EC040047A645 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D329DF7D1AE2EBEF0047A645 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D34F589E1AE30B1A00178ED0 /* OrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34F589D1AE30B1A00178ED0 /* OrdersVC.swift */; };
+		D3AF371E1B2AEA39007313AE /* DetailOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF371D1B2AEA39007313AE /* DetailOrder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		D329DF751AE2EBEF0047A645 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		D329DF841AE2EBF50047A645 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 		D34F589D1AE30B1A00178ED0 /* OrdersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersVC.swift; sourceTree = "<group>"; };
+		D3AF371D1B2AEA39007313AE /* DetailOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOrder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				D329DF571AE2EBB90047A645 /* ViewController.swift */,
 				D329DF591AE2EBB90047A645 /* Main.storyboard */,
 				D34F589D1AE30B1A00178ED0 /* OrdersVC.swift */,
+				D3AF371D1B2AEA39007313AE /* DetailOrder.swift */,
 				D329DF5C1AE2EBB90047A645 /* Images.xcassets */,
 				D329DF5E1AE2EBB90047A645 /* LaunchScreen.xib */,
 				D329DF531AE2EBB90047A645 /* Supporting Files */,
@@ -407,6 +410,7 @@
 				D329DF581AE2EBB90047A645 /* ViewController.swift in Sources */,
 				D34F589E1AE30B1A00178ED0 /* OrdersVC.swift in Sources */,
 				D329DF561AE2EBB90047A645 /* AppDelegate.swift in Sources */,
+				D3AF371E1B2AEA39007313AE /* DetailOrder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
