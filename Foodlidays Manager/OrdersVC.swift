@@ -52,19 +52,17 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         case 2:
             self.cat = "delivered"
         case 3:
-            self.cat = "cancelled"
+            self.cat = "canceled"
         default:
-            self.cat = "pending"
             break;
         }
         self.cpt = 0
         self.indexOrder = 0
-        countCat()
+        countCat(self.allOrders)
         self.tableView.reloadData()
     }
     
-    
-    func countCat()
+    func countCat(orders: JSON)
     {
         for(index,order) in self.allOrders
         {
@@ -75,6 +73,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         }
     }
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     @IBOutlet weak var numero: UILabel!
     @IBOutlet weak var prix: UILabel!
@@ -92,6 +91,16 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         super.viewDidLoad()
         self.toolbar.frame = CGRect(x: 0,y: 0,width: 320,height: 80)
         tableView.registerNib(UINib(nibName: "OrderCell", bundle: nil), forCellReuseIdentifier: "OrderCellOne")
+        catChanger.selectedSegmentIndex = 0
+        indicator.startAnimating()
+        
+        let delay = 2 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.indicator.stopAnimating()
+            self.categoryPicker(0)
+            self.indicator.hidden = true
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,6 +148,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
             dispatch_async(dispatch_get_main_queue()) {
             self.cpt = JSON(data!).count
             self.allOrders = JSON(data!)
+            self.countCat(JSON(data!))
             
             }
         }
