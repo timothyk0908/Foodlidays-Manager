@@ -23,6 +23,8 @@ class DetailOrder: UIViewController {
     @IBAction func goBack(sender: AnyObject) {
         performSegueWithIdentifier("go_back", sender: self)
     }
+    @IBOutlet weak var food: UILabel!
+    @IBOutlet weak var infos: UILabel!
     
     @IBAction func statusChanger(sender: AnyObject) {
         switch statusSC.selectedSegmentIndex
@@ -62,19 +64,35 @@ class DetailOrder: UIViewController {
     
     func orderDetails(DetailOrder: JSON)
     {
-        for (index, food) in DetailOrder["foods"] {
-            var name = food["food_name"].stringValue
-            var quantity = food["ordered_quantity"].stringValue
-            var price = food["food_price"].stringValue
+        for (index, foods) in DetailOrder["foods"] {
+            var name = foods["food_name"].stringValue
+            var quantity = foods["ordered_quantity"].stringValue
+            var price = foods["food_price"].stringValue
             
             var prix = price as NSString
             var quantite = quantity as NSString
             prix = String(stringInterpolationSegment: prix.doubleValue * quantite.doubleValue)
             
-            println("\(quantity)X \(name) | \(price)/u : \(prix)" )
+            var line: String = "\(quantity)X   \(name) | \(price)/u : \(prix)\n"
+            food.text = food.text?.stringByAppendingString(line)
+            food.numberOfLines++
         }
-        
+
         self.status = DetailOrder["status"].stringValue
+        var email = DetailOrder["client_email"].stringValue
+        var address = DetailOrder["place_street_address"].stringValue
+        var zip = DetailOrder["place_zip"].stringValue
+        var city = DetailOrder["place_city"].stringValue
+        var country = DetailOrder["place_country"].stringValue
+        var room = DetailOrder["place_room_number"].stringValue
+        var subtotal = DetailOrder["sub_total"].stringValue
+        var fee = DetailOrder["management_fee"].stringValue
+        var totalprice = DetailOrder["total_price"].stringValue
+        var mode = DetailOrder["payment_mode"].stringValue
+        
+        infos.text = "\(email) \n \(address) \(zip),\(country),\(room) \n \(subtotal) + \(fee) : \(totalprice)€ | \(mode)"
+        
+        
         switch self.status
         {
             case "pending":

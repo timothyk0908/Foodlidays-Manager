@@ -94,7 +94,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         catChanger.selectedSegmentIndex = 0
         indicator.startAnimating()
         
-        let delay = 2 * Double(NSEC_PER_SEC)
+        let delay = 0.5 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue()) {
             self.indicator.stopAnimating()
