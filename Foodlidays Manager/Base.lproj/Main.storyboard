@@ -26,8 +26,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T44-4G-j3l">
+                                <rect key="frame" x="37" y="123" width="247" height="30"/>
+                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8t-sC-5gD">
-                                <rect key="frame" x="110" y="267" width="100" height="45"/>
+                                <rect key="frame" x="110" y="239" width="100" height="45"/>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,13 +49,6 @@
                                     <action selector="signInPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CyX-8P-4Yu"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T44-4G-j3l">
-                                <rect key="frame" x="73" y="123" width="175" height="30"/>
-                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="202.66666666666666" y="207.31999999999999"/>
+            <point key="canvasLocation" x="202" y="207"/>
         </scene>
         <!--Orders-->
         <scene sceneID="Nwx-WU-9jg">
@@ -81,24 +81,25 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Orders" style="plain" id="j9l-3j-jFz">
-                                    <segmentedControl key="customView" alpha="0.099999999999999686" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" segmentControlStyle="plain" selectedSegmentIndex="0" id="eR4-gW-gzZ">
+                                    <segmentedControl key="customView" opaque="NO" alpha="0.099999999999999686" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" segmentControlStyle="plain" selectedSegmentIndex="0" id="eR4-gW-gzZ">
                                         <rect key="frame" x="16" y="8" width="299" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.42533641318652082" green="0.68055000919609565" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="1" green="0.62835559266148278" blue="0.17623950385237763" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <segments>
                                             <segment title="Pending"/>
                                             <segment title="Processed"/>
                                             <segment title="Delivered"/>
                                             <segment title="Canceled"/>
                                         </segments>
-                                        <color key="tintColor" red="0.92380056290000001" green="0.94821174210000003" blue="0.94927781820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="categoryPicker:" destination="6Bg-00-blB" eventType="valueChanged" id="8v3-PP-QV3"/>
                                         </connections>
                                     </segmentedControl>
+                                    <color key="tintColor" red="1" green="0.74870300820000002" blue="0.47390920910000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </barButtonItem>
                             </items>
-                            <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="barTintColor" red="1" green="0.74870300824882241" blue="0.47390920912818668" alpha="1" colorSpace="calibratedRGB"/>
                         </toolbar>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="y3z-0p-fld">
                             <rect key="frame" x="0.0" y="111" width="320" height="37"/>
@@ -118,27 +119,30 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prix" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErF-sD-r6J">
-                                            <rect key="frame" x="8" y="23" width="78" height="21"/>
+                                            <rect key="frame" x="30" y="22" width="78" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ht1-go-P5B">
-                                            <rect key="frame" x="263" y="6" width="41" height="30"/>
+                                            <rect key="frame" x="285" y="6" width="41" height="30"/>
                                             <state key="normal" backgroundImage="arrow"/>
-                                            <connections>
-                                                <action selector="toOrder:" destination="21e-Cp-DK1" eventType="touchUpInside" id="MIB-bg-fiQ"/>
-                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOL-jD-hy5">
                                             <rect key="frame" x="110" y="0.0" width="137" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mM9-Ph-OTW">
                                             <rect key="frame" x="110" y="22" width="158" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4l-Im-gWJ">
+                                            <rect key="frame" x="255" y="5" width="42" height="32"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -147,9 +151,9 @@
                                 <connections>
                                     <outlet property="date" destination="zOL-jD-hy5" id="pyb-vv-ItB"/>
                                     <outlet property="email" destination="mM9-Ph-OTW" id="JEk-u3-TKC"/>
+                                    <outlet property="id" destination="g4l-Im-gWJ" id="yTx-pk-BcO"/>
                                     <outlet property="numero" destination="TMW-gW-t4K" id="PwV-0B-QVM"/>
                                     <outlet property="prix" destination="ErF-sD-r6J" id="ZLF-Wn-ZRj"/>
-                                    <outlet property="sender" destination="Ht1-go-P5B" id="S52-dk-jaQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -158,21 +162,25 @@
                             <outlet property="delegate" destination="6Bg-00-blB" id="ccb-mO-28X"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem width="529" id="bO7-yU-DIz"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Orders" id="s8j-PY-gxl">
                         <barButtonItem key="backBarButtonItem" title="Back" id="oFI-dm-3vP"/>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="catChanger" destination="eR4-gW-gzZ" id="y3G-YP-Qo1"/>
                         <outlet property="indicator" destination="y3z-0p-fld" id="cpq-Fe-SAd"/>
                         <outlet property="toolbar" destination="gMI-Tm-ntl" id="RNm-6L-69b"/>
-                        <segue destination="f8e-Rb-8V8" kind="modal" identifier="goto_detail" id="SsJ-z7-qjF"/>
+                        <segue destination="f8e-Rb-8V8" kind="modal" identifier="goto_detail" modalTransitionStyle="partialCurl" id="SsJ-z7-qjF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXF-Kk-aje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="679" y="207"/>
+            <point key="canvasLocation" x="641" y="-88"/>
         </scene>
         <!--DetailOrder-->
         <scene sceneID="aKz-3x-zfV">
@@ -195,40 +203,58 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" red="1" green="0.65752541539999998" blue="0.19291584910000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="9SE-h0-stX">
-                                <rect key="frame" x="10" y="423" width="300" height="29"/>
+                                <rect key="frame" x="10" y="389" width="300" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.65752541539999998" blue="0.19291584910000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="Pending"/>
                                     <segment title="Processed"/>
                                     <segment title="Delivered"/>
                                     <segment title="Canceled"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="statusChanger:" destination="f8e-Rb-8V8" eventType="valueChanged" id="Tgh-4i-Tev"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbZ-oP-Pxk">
-                                <rect key="frame" x="135" y="382" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hr-jq-vqq">
                                 <rect key="frame" x="146" y="61" width="28" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib4-il-m9W">
-                                <rect key="frame" x="10" y="101" width="300" height="84"/>
+                                <rect key="frame" x="10" y="101" width="300" height="65"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGs-Vu-Ach">
-                                <rect key="frame" x="10" y="186" width="294" height="188"/>
+                                <rect key="frame" x="10" y="155" width="294" height="188"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbZ-oP-Pxk">
+                                <rect key="frame" x="135" y="360" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pqm-9B-Sbc">
+                                <rect key="frame" x="257" y="61" width="56" height="32"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="f8e-Rb-8V8" eventType="touchUpInside" id="vHi-6i-hkl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvs-DT-QLr">
+                                <rect key="frame" x="38" y="312" width="245" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -248,8 +274,10 @@
                         <outlet property="food" destination="HGs-Vu-Ach" id="ubf-gT-mQi"/>
                         <outlet property="infos" destination="ib4-il-m9W" id="pfn-LU-3hf"/>
                         <outlet property="labelId" destination="6hr-jq-vqq" id="qzO-Hj-BEt"/>
+                        <outlet property="labelPrix" destination="lvs-DT-QLr" id="pZT-Ef-I9I"/>
                         <outlet property="statusSC" destination="9SE-h0-stX" id="CgF-SC-UlF"/>
-                        <segue destination="6Bg-00-blB" kind="modal" identifier="go_back" id="1xw-aK-Qew"/>
+                        <segue destination="6Bg-00-blB" kind="modal" identifier="go_back" modalTransitionStyle="crossDissolve" id="1xw-aK-Qew"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="logout" modalTransitionStyle="crossDissolve" id="BKH-nB-2ut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWY-wF-Nun" userLabel="First Responder" sceneMemberID="firstResponder"/>

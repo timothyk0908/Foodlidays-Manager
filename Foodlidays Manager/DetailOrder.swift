@@ -17,9 +17,14 @@ class DetailOrder: UIViewController {
     
     var status: String!
     
+    @IBAction func logoutPressed(sender: AnyObject) {
+        performSegueWithIdentifier("logout", sender: self)
+    }
     var order:JSON! = []
     
     @IBOutlet weak var labelId: UILabel!
+    @IBOutlet weak var labelPrix: UILabel!
+    
     @IBAction func goBack(sender: AnyObject) {
         performSegueWithIdentifier("go_back", sender: self)
     }
@@ -89,8 +94,11 @@ class DetailOrder: UIViewController {
         var fee = DetailOrder["management_fee"].stringValue
         var totalprice = DetailOrder["total_price"].stringValue
         var mode = DetailOrder["payment_mode"].stringValue
+        var date = DetailOrder["created_at"].stringValue
         
-        infos.text = "\(email) \n \(address) \(zip),\(country),\(room) \n \(subtotal) + \(fee) : \(totalprice)€ | \(mode)"
+        infos.text = "\(email) \n \(address) \(zip),\(country),\(room) \n \(date)"
+        
+        labelPrix.text = "\(subtotal) + \(fee) : \(totalprice)€ | \(mode)"
         
         
         switch self.status
@@ -113,6 +121,10 @@ class DetailOrder: UIViewController {
         if(segue.identifier == "go_back"){
             let destinationVC = segue.destinationViewController as! OrdersVC
             destinationVC.id = self.restoId
+        }
+        
+        if(segue.identifier == "logout"){
+            let destinationVC = segue.destinationViewController as! ViewController
         }
     }
     

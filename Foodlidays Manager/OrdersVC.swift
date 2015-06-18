@@ -19,7 +19,7 @@ class OrderCell : UITableViewCell{
     @IBOutlet weak var numero: UILabel!
     @IBOutlet weak var prix: UILabel!
     
-    var id = 0
+    @IBOutlet weak var id: UILabel!
     
     @IBAction func toOrder(sender: AnyObject) {
         println(id)
@@ -94,7 +94,7 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         catChanger.selectedSegmentIndex = 0
         indicator.startAnimating()
         
-        let delay = 0.5 * Double(NSEC_PER_SEC)
+        let delay = 1.5 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue()) {
             self.indicator.stopAnimating()
@@ -112,10 +112,9 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         let indexPath = tableView.indexPathForSelectedRow();
         
         let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as! OrderCell?;
-        cellId = currentCell?.id
+        cellId = currentCell?.id.text?.toInt()
         performSegueWithIdentifier("goto_detail", sender: self)
     }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell") as! OrderCell!
@@ -124,12 +123,13 @@ class OrdersVC:UITableViewController, UITableViewDataSource, UITableViewDelegate
         {
             self.indexOrder = self.indexOrder + 1
         }
-
+        
+                var prix = self.allOrders[indexOrder]["total_price"].stringValue
                 cell.numero.text = self.allOrders[indexOrder]["place_room_number"].stringValue
-                cell.prix.text = self.allOrders[indexOrder]["total_price"].stringValue
+                cell.prix.text = "\(prix)€"
                 cell.email.text = self.allOrders[indexOrder]["client_email"].stringValue
                 cell.date.text = self.allOrders[indexOrder]["created_at"].stringValue
-                cell.id = self.allOrders[indexOrder]["id"].intValue
+                cell.id.text = self.allOrders[indexOrder]["id"].stringValue
 
         
         self.indexOrder = self.indexOrder + 1

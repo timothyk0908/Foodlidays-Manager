@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var labelEmail: UITextField!
@@ -31,6 +31,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bgFoodlidays")!)
+        labelEmail.attributedPlaceholder = NSAttributedString(string:"Email",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        labelPassword.attributedPlaceholder = NSAttributedString(string:"Password",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,10 +55,10 @@ class ViewController: UIViewController {
     @IBAction func signInPressed(sender: AnyObject) {
     let alertController = UIAlertController(title: "Error", message: "Please enter a valid email", preferredStyle: .Alert)
 
-        //if self.isValidEmail(labelEmail.text) {
+        if self.isValidEmail(labelEmail.text) {
             let parameters = [
-                "email": "thomasr@innervisiongroup.com",
-                "password": "inner2013"
+                "email": labelEmail.text,
+                "password": labelPassword.text
             ]
         
             Alamofire.request(.POST, "http:foodlidays.dev.innervisiongroup.com/api/v1/resto/login",parameters: parameters).responseJSON() {
@@ -71,13 +75,13 @@ class ViewController: UIViewController {
                         self.showAlert("Wrong Email/Password combination")
                         self.presentViewController(alertController, animated: true, completion: nil)
                 }
-           // }
+            }
         }
-         /*else {
+         else {
             println("Bad email")
             self.showAlert("Please enter a correct e-mail")
             self.presentViewController(alertController, animated: true, completion: nil)
-        }*/
+        }
     
     }
     
